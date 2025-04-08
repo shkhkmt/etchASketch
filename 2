@@ -1,0 +1,46 @@
+const linkElement = document.createElement('link'); 
+linkElement.rel = 'stylesheet'; 
+linkElement.type = 'text/css'; 
+linkElement.href = 'styles.css'; 
+document.head.appendChild(linkElement); 
+
+const contentDiv = document.createElement('div'); 
+contentDiv.id = 'content'; 
+document.body.appendChild(contentDiv); 
+
+const header = document.createElement('header'); 
+header.id = 'header'; 
+header.textContent = 'Etch a Sketch'; 
+contentDiv.appendChild(header); 
+
+const sketchDiv = document.createElement('div'); 
+sketchDiv.id = 'sketchDiv'; 
+contentDiv.appendChild(sketchDiv); 
+
+function bgChange() {
+  let h = Math.random() * 360; 
+  let s = Math.random() * 100; 
+  let l = Math.random() * 100; 
+  let bg = document.querySelector('.colorBlock');  
+  bg.style.backgroundColor = `hsl(${h}% ${s}% ${l})`; 
+}
+
+function handleHover() {
+  console.log('the event works'); 
+  bgChange(); 
+}
+
+
+for (let i = 0; i <= 256; i++) {
+  const colorBlock = document.createElement('div');
+  colorBlock.classList.add('box');
+
+  const buttons = document.createElement('button');
+  buttons.classList.add('colorBlock');
+
+  sketchDiv.appendChild(colorBlock); 
+  colorBlock.appendChild(buttons); 
+  sketchDiv.addEventListener('click', handleHover); 
+}
+
+
