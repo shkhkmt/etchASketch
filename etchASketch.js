@@ -14,24 +14,49 @@ header.id = 'header';
 header.textContent = 'Etch a Sketch'; 
 contentDiv.appendChild(header); 
 
-const sketchDiv = document.createElement('div'); 
-sketchDiv.id = 'sketchDiv'; 
-contentDiv.appendChild(sketchDiv); 
+const btnPopup = document.createElement('button')
+btnPopup.id = 'btnPopup'; 
+btnPopup.textContent = 'change size'; 
+btnPopup.style.display = 'flex'; 
+contentDiv.appendChild(btnPopup); 
 
-for (let i = 1; i <= 256; i++) {
-  const buttons = document.createElement('button');
-  buttons.id = `colBox${i}`; 
+btnPopup.addEventListener('click', getNumSides) 
+let number; 
 
-  sketchDiv.appendChild(buttons); 
+function getNumSides() {
+  number = prompt("Choose number of squares per side: ");
+  createSketchDiv(number) 
+  return number; 
 }
-/*
-function handleHover(event) {
-  let target = event.target;
-  boxId = target.id; 
-  console.log(boxId); 
-  return boxId;  
+
+function createSketchDiv(getNumSides) {
+  
+  if (document.getElementById('sketchDiv') !== null) {
+    const currentDiv = document.getElementById('sketchDiv'); 
+    contentDiv.removeChild(currentDiv)  
+  }
+
+  const sketchDiv = document.createElement('div'); 
+  sketchDiv.id = 'sketchDiv'; 
+  sketchDiv.style.display = 'flex'; 
+  sketchDiv.style.flexWrap = 'wrap';
+  sketchDiv.style.aspectRatio = '1 / 1';
+  sketchDiv.style.width = `${20 *number}px`; 
+  contentDiv.appendChild(sketchDiv); 
+
+
+  for (let i = 1; i <= number * number; i++) {
+    const btnDiv = document.createElement('div'); 
+    btnDiv.id = `bDiv${i}`;
+    btnDiv.style.flex = '1 1 auto'; 
+    btnDiv.style.aspectRatio = '1 / 1'; 
+    btnDiv.style.width = '20px';  
+    btnDiv.style.height = '20px';
+    sketchDiv.appendChild(btnDiv);
+
+  } 
+  sketchDiv.addEventListener('mouseover', bgChange); 
 }
-*/ 
 
 function rndCol() {
   let r = (Math.random() * 255); 
@@ -48,5 +73,3 @@ function bgChange(event) {
   btn.style.backgroundColor = rndCol();  
 }
 
-
-sketchDiv.addEventListener('mouseover', bgChange); 

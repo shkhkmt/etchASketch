@@ -1,5 +1,5 @@
 body {
-  margin: 0; 
+  margin: 3em; 
   padding: 0; 
   background: hsl(0 0 80%); 
   min-height: 100vh; 
@@ -12,32 +12,21 @@ body {
   align-items: anchor-center; 
   display: flex;
   flex-direction: column;  
-}
-
-
-button {
-  display: flex; 
-  width: 20px; 
-  height: 20px; 
+  width: 100%; 
   flex-wrap: wrap; 
-  font-size: 0; 
-  margin: 0; 
-  padding: 0;
-  border: 1px solid hsl(0 0 100%); 
 }
+
+
 
 #sketchDiv {
-  display: flex; 
-  width: 20em;  
-  height: auto; 
-  flex-wrap: wrap; 
   border: 1px solid black; 
   margin: 2em;
   background-color: white; 
 }
-
-.box > button {
+/*
+button {
   border: 1 px solid hsl(0 0 100%);
   all: unset; 
+  display: flex; 
 }
-
+*/
