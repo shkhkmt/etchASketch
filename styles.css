@@ -16,6 +16,10 @@ body {
   flex-wrap: wrap; 
 }
 
+.rows {
+  display: flex; 
+  flex-direction: column; 
+}
 
 
 #sketchDiv {
